@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//コントローラ名はTasksControllerとする
+Route::get('/', 'TasksController@index');
+
+//今回の課題ではresourceを使用する
+Route::resource('tasks', 'TasksController');
