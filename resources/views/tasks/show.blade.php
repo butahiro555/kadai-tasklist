@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>番号 = {{ $task->id }} のメッセージ詳細ページ</h1>
+    <h1>番号 = {{ $task->id }} タスク内容詳細ページ</h1>
 
     <table class="table table-bordered">
         <tr>
@@ -10,8 +10,12 @@
             <td>{{ $task->id }}</td>
         </tr>
         <tr>
-            <th>メッセージ</th>
+            <th>タスク内容</th>
             <td>{{ $task->content }}</td>
+        </tr>
+        <tr>
+            <th>ステータス</th>
+            <td>{{ $task->status }}</td>
         </tr>
     </table>
     
