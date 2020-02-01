@@ -15,7 +15,7 @@
                 
                 <div class="form-group">
                     <label>ステータス</label>
-                    <input type="text" name="status" class="form-control">
+                    <input type="text" name="status" value="<?php print $task->status; ?>" class="form-control">
                 </div>
                 
                 {!! Form::submit('更新', ['class' => 'btn btn-primary']) !!}
