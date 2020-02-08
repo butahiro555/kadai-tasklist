@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
     <h1>番号: {{ $task->id }} のタスク内容編集ページ</h1>
 
     <div class="row">

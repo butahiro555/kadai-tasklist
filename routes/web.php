@@ -27,9 +27,8 @@ Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('sign
 Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
 
 // ユーザ機能
+// ユーザー認証が出来ていれば、TaskControllerにアクセスされる
 Route::group(['middleware' => ['auth']], function () {
-    Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
+    Route::resource('tasks', 'TasksController');
 });
 
-//今回の課題ではresourceを使用する
-Route::resource('tasks', 'TasksController');

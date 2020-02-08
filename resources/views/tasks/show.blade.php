@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
     <h1>番号 = {{ $task->id }} タスク内容詳細ページ</h1>
 
     <table class="table table-bordered">
@@ -24,5 +23,4 @@
     {!! Form::model($task, ['route' => ['tasks.destroy', $task->id], 'method' => 'delete']) !!}
         {!! Form::submit('削除', ['class' => 'btn btn-danger']) !!}
     {!! Form::close() !!}
-    
 @endsection

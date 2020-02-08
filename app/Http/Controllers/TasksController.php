@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+// 別の名前空間のファイルを参照する
 use App\Task;
 
 class TasksController extends Controller
 {
+    
     public function index()
     {
         $data = [];
@@ -54,7 +56,7 @@ class TasksController extends Controller
         $task = new Task;
         $task->content = $request->content;
         $task->status = $request->status; // 追加
-        $task->user_id = $request->user()->id;
+        $task->user_id = $request->user()->id; // $request->user()で現在ログインしているユーザーのモデルインスタンスを取得し、->idでそのユーザーのIDを取得している
         $task->save();
         
         return redirect('/');
