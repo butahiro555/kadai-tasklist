@@ -18,7 +18,7 @@
                     <input type="text" name="status" value="<?php print $task->status; ?>" class="form-control">
                 </div>
                 
-                {!! Form::submit('更新', ['class' => 'btn btn-primary']) !!}
+            {!! Form::submit('更新', ['class' => 'btn btn-primary']) !!}
                 
             {!! Form::close() !!}
         </div>

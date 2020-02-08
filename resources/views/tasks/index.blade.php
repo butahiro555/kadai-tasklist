@@ -9,6 +9,7 @@
         <thead>
             <tr>
                 <th>番号</th>
+                <th>ユーザーID</th>
                 <th>タスク内容</th>
                 <th>ステータス</th>
             </tr>
@@ -17,6 +18,7 @@
             @foreach ($tasks as $task)
             <tr>
                 <td>{!! link_to_route('tasks.show', $task->id, ['id' => $task->id]) !!}</td>
+                <td>{{ $task->user_id }}</td>
                 <td>{{ $task->content }}</td>
                 <td>{{ $task->status }}</td>
             </tr>

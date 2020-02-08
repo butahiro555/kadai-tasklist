@@ -4,23 +4,24 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Task;    //追加
+use App\Task;
 
 class TasksController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    // getでmessages/にアクセスされた場合の「一覧表示処理」
     public function index()
     {
-        $tasks = Task::all();
+        $data = [];
+        if (\Auth::check()) {
+            $user = \Auth::user();
+            $task = $user->task()->orderBy('created_at', 'desc')->paginate(10);
+            
+            $data = [
+                'user' => $user,
+                'task' => $task,
+                ];
+        }
         
-        return view('tasks.index', [
-            'tasks' => $tasks,
-            ]);
+        return view('welcome', $data);
     }
 
     /**
@@ -53,6 +54,7 @@ class TasksController extends Controller
         $task = new Task;
         $task->content = $request->content;
         $task->status = $request->status; // 追加
+        $task->user_id = $request->user()->id;
         $task->save();
         
         return redirect('/');
