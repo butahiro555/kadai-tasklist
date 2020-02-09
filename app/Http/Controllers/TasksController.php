@@ -33,16 +33,13 @@ class TasksController extends Controller
      */
     public function create()
     {
-        $task = \App\Task::find($id);
         
-        if(\Auth::id() === $task->user_id) {
         
         $task = new Task;
         
         return view('tasks.create', [
             'task' => $task,
             ]);
-        }
         
         return redirect('/');
     }
@@ -55,10 +52,7 @@ class TasksController extends Controller
      */
     public function store(Request $request)
     {
-        $task = \App\Task::find($id);
-        
-        if(\Auth::id() === $task->user_id) {
-            
+
         $this->validate($request, [
             'content' => 'required|max:10',
             'status' => 'required|max:10', // 追加
@@ -70,7 +64,6 @@ class TasksController extends Controller
         $task->user_id = $request->user()->id; // $request->user()で現在ログインしているユーザーのモデルインスタンスを取得し、->idでそのユーザーのIDを取得している
         $task->save();
         
-        }
         
         return redirect('/');
     }
